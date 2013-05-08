@@ -14,7 +14,7 @@ source ${OPENSHIFT_REPO_DIR}/.openshift/action_hooks/common
 
 # Configure versions
 NGINX_VERSION='1.2.6'
-ZLIB_VERSION='1.2.7'
+ZLIB_VERSION='1.2.8'
 PCRE_VERSION='8.32'
 PHP_VERSION='5.4.11'
 ICU_VERSION='50.1.2'

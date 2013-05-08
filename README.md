@@ -1,73 +1,84 @@
-boekkooi/openshift-nginx-php54
+Nginx + PHP 一键包  （OpenShift）
 ============================
-This is a sample repository to get nginx + php fpm running on openshift.
+这是一个 OpenShift 上的 Nginx + php-fpm 一键包的 repo 。
 
-More information about openshift: https://openshift.redhat.com/
+更多有关 OpenShift 的信息，请访问：https://openshift.redhat.com/
 
-What's inside
+这只是一个翻译，加上对于原作者的小小修正。
+
+文件都是些啥？
 -------------
 
-**The `.openshift/action_hooks` scripts:**
+**`.openshift/action_hooks` 文件夹中的脚本：**
 
-* build:
-    - Build the versions of nginx, php and nodejs that are needed
+* build
+    - 自动搭建 Nginx, PHP, node.js 的脚本。
 * build_*
-    - The functions used for checking the versions and installing
+    - 用于检测版本和安装。
 * deploy
-    - This will render copy the nginx and php conf files
-    - Copy the .bash_profile if there is none
+    - 这个将会自动修改 Nginx 和 PHP 的配置文件。
+    - 如果不存在，复制 .bash_profile 文件。
 * common
-    - A common include script for the action hooks (just setting some path's)
+    - 用于重启时输出路径。（必需）
 * start
-    - Starts Nginx and php-fpm
+    - 启动 Nginx 和 PHP。（必需）
 * stop
-    - Stops Nginx and php-fpm
+    - 停止 Nginx 和 PHP。（必需）
 
-**The `.openshift/tmpl` templates:**
+**`.openshift/tmpl` 文件夹中的模版：**
 
-Here are the templates used by the build and deploy scripts.
-Just customize away.
+这里是一些用于脚本搭建和部署的模版。
+可自行修改。
 
-**The `web/` nginx web folder:**
+**`web/` Nginx 网络文件夹**
 
-The web folder currently used. You can change this in `.openshift/tmpl/nginx.conf.tmpl`.
+目前使用的网络文件夹。你可以修改 `.openshift/tmpl/nginx.conf.tmpl` 文件来修改网络文件夹的位置。
 
-Usage
+使用
 -----
 
-To get PHP 5.4 working at OpenShift, you have to do the following:
+要让 PHP 5.4 在 OpenShift 上运行，你需要进行以下步骤：
 
-1. Create a new Openshift "Do-It-Yourself" application
-2. Clone this repository
-3. Add a new remote "openshift" (You can find the URL to your git repository
-   on the Openshift application page)
-4. Run `git push --force "openshift" master:master`
-5. SSH into your gear
-7. Wait for build to finish (This may take at least an hour)
-8. Open http://appname-namespace.rhcloud.com/ to verify
+1. 创建一个新的 Openshift "Do-It-Yourself" 应用；
+2. 创建时使用本 repo；
+3. 通过 SSH 连接到你的 gear ；
+4. cd 到 action_hooks ；
+5. 运行 `sh build` ；
+6. 等待编译完成（这将持续至少一个小时）；
+7. 运行 `sh deploy` ；
+8. 打开 http://appname-namespace.rhcloud.com/ 来验证安装是否成功。
 
-Other
+** 在重启app时可能会出现端口被占用的情况，解决方法如下：
+
+1. `lsof -i :8080` ；
+2. 找到占用8080端口的pid号，使用 `kill -9 pid` 杀掉进程（pid为占用端口的pid号）；
+3. 再次重启应用。
+
+其他
 -----
 
-When using the action hooks within you own project by copy-paste method don't forget todo `git update-index --chmod=+x -- $(git ls-files .openshift/action_hooks/*)`.
+当在你自己的工程中通过复制粘贴使用 action hooks 时候别忘记使用 `git update-index --chmod=+x -- $(git ls-files .openshift/action_hooks/*)`。
 
-Currently [nodejs](http://nodejs.org/) will only be build when the version is not the same a the one installed by default, it will just create a proxy for npm so it can be used with less problems.
+** 上一句话仅对使用 `git push` 搭建 OpenShift 者有效 **
 
-Thanks
+目前 [nodejs](http://nodejs.org/) 只会在版本与已安装的不相同时才会安装，它只创建一个到 npm 的代理，通过这样避免更多的错误。
+
+鸣谢
 ------
 
-Thanks to the following people:
+感谢:
 
 * [@sgoettschkes](https://github.com/Sgoettschkes)
 * [@drejohnson](https://github.com/drejohnson)
 * [@openshift](https://github.com/openshift/)
+* [@boekkooi](https://github.com/boekkooi)
 
-Todo's
+计划
 ------
-This is stuff which needs to be done right now. Feel free to do a pull request!
+这是一些将要去做的计划，请随意提出请求。
 
-* Get php --with-mcrypt to compile
-* Test update functionality more thoroughly
-* Test with Jenkins (http://jenkins-ci.org/) builds
-* Get a [cup of coffee](https://www.gittip.com/Warnar%20Boekkooi/)
+* 让 PHP `--with-mcrypt` 可以编译
+* 测试更新功能更加彻底
+* 利用 Jenkins (http://jenkins-ci.org/) 测试
+* 喝杯[咖啡](https://www.gittip.com/Warnar%20Boekkooi/)
 
