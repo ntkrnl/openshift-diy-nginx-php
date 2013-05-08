@@ -82,9 +82,9 @@ To get PHP 5.4 working at OpenShift, you have to do the following:
 8. 打开 http://appname-namespace.rhcloud.com/ 来验证安装是否成功。
 8. Open http://appname-namespace.rhcloud.com/ to verify
 
-** 在重启app时可能会出现端口被占用的情况，解决方法如下： **
+**在重启app时可能会出现端口被占用的情况，解决方法如下：**
 
-** When restarting app, it may appear the `Port in use` error, you can solve it by do the following: **
+**When restarting app, it may appear the `Port in use` error, you can solve it by do the following:**
 
 1. `lsof -i :8080` ；
 2. 找到占用8080端口的pid号，使用 `kill -9 pid` 杀掉进程（pid为占用端口的pid号）；
