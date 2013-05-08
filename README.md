@@ -128,11 +128,11 @@ Thanks to the following people:
 This is stuff which needs to be done right now. Feel free to do a pull request!
 
 * 让 PHP `--with-mcrypt` 可以编译
-* Get php --with-mcrypt to compile
+ - Get php `--with-mcrypt` to compile
 * 测试更新功能更加彻底
-* Test update functionality more thoroughly
+ - Test update functionality more thoroughly
 * 利用 Jenkins (http://jenkins-ci.org/) 测试
-* Test with Jenkins (http://jenkins-ci.org/) builds
+ - Test with Jenkins (http://jenkins-ci.org/) builds
 * 喝杯[咖啡](https://www.gittip.com/Warnar%20Boekkooi/)
-* Get a [cup of coffee](https://www.gittip.com/Warnar%20Boekkooi/)
+ - Get a [cup of coffee](https://www.gittip.com/Warnar%20Boekkooi/)
 
