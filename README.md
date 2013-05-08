@@ -87,11 +87,11 @@ To get PHP 5.4 working at OpenShift, you have to do the following:
 
 **When restarting app, it may appear the `Port in use` error, you can solve it by do the following:**
 
-1. `lsof -i :8080` ；
-2. 找到占用8080端口的pid号，使用 `kill -9 pid` 杀掉进程（pid为占用端口的pid号）；
-2. Find the pid of process that use the 8080 port, use `kill -9 pid` to kill the process ("pid" is the pid number of the process)
-3. 再次重启应用。
-3. restart your app again.
+* 1. `lsof -i :8080` ；
+* 2. 找到占用8080端口的pid号，使用 `kill -9 pid` 杀掉进程（pid为占用端口的pid号）；
+ - 2. Find the pid of process that use the 8080 port, use `kill -9 pid` to kill the process ("pid" is the pid number of the process)
+* 3. 再次重启应用。
+ - 3. restart your app again.
 
 其他   |   Other
 -----
