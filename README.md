@@ -65,22 +65,23 @@ The web folder currently used. You can change this in `.openshift/tmpl/nginx.con
 
 To get PHP 5.4 working at OpenShift, you have to do the following:
 
-1. 创建一个新的 Openshift "Do-It-Yourself" 应用；
-1. Create a new Openshift "Do-It-Yourself" application
-2. 创建时使用本 repo；
-2. Use this repo when creating application
-3. 通过 SSH 连接到你的 gear ；
-3. SSH into your gear
-4. cd 到 action_hooks ；
-4. cd to action_hooks
-5. 运行 `sh build` ；
-5. run `sh build`
-6. 等待编译完成（这将持续至少一个小时）；
-6. Wait for build to finish (This may take at least an hour)
-7. 运行 `sh deploy` ；
-7. run `sh deploy`
-8. 打开 http://appname-namespace.rhcloud.com/ 来验证安装是否成功。
-8. Open http://appname-namespace.rhcloud.com/ to verify
+* 1. 创建一个新的 Openshift "Do-It-Yourself" 应用；
+ -  1. Create a new Openshift "Do-It-Yourself" application
+* 2. 创建时使用本 repo；
+ - 2. Use this repo when creating application
+* 3. 通过 SSH 连接到你的 gear ；
+ - 3. SSH into your gear
+* 4. cd 到 action_hooks ；
+ - 4. cd to action_hooks
+* 5. 运行 `sh build` ；
+ - 5. run `sh build`
+* 6. 等待编译完成（这将持续至少一个小时）；
+ - 6. Wait for build to finish (This may take at least an hour)
+* 7. 运行 `sh deploy` ；
+ - 7. run `sh deploy`
+* 8. 打开 http://appname-namespace.rhcloud.com/ 来验证安装是否成功。
+ - 8. Open http://appname-namespace.rhcloud.com/ to verify
+
 
 **在重启app时可能会出现端口被占用的情况，解决方法如下：**
 
