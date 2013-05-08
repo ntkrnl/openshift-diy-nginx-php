@@ -100,7 +100,10 @@ To get PHP 5.4 working at OpenShift, you have to do the following:
 
 When using the action hooks within you own project by copy-paste method don't forget todo `git update-index --chmod=+x -- $(git ls-files .openshift/action_hooks/*)`.
 
-** 上一句话仅对使用 `git push` 搭建 OpenShift 者有效 **
+
+**上一句话仅对使用 `git push` 搭建 OpenShift 者有效**
+
+**The sentence before just suit for the people who use `git push` to set up OpenShift application.**
 
 目前 [nodejs](http://nodejs.org/) 只会在版本与已安装的不相同时才会安装，它只创建一个到 npm 的代理，通过这样避免更多的错误。
 
