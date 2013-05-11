@@ -23,6 +23,11 @@ cp ${TEMPLATE_DIR}/php-fpm.conf.tmpl ${BUILD_DIR}/php-fpm.conf
 perl -p -i -e 's/\$\{([^}]+)\}/defined $ENV{$1} ? $ENV{$1} : $&/eg' ${BUILD_DIR}/php-fpm.conf
 cp ${BUILD_DIR}/php-fpm.conf ${PHP_DIR}/etc/php-fpm.conf
 
+echo "Pre-processing PHP.ini."
+cp ${TEMPLATE_DIR}/php.ini.tmpl ${BUILD_DIR}/php.ini
+perl -p -i -e 's/\$\{([^}]+)\}/defined $ENV{$1} ? $ENV{$1} : $&/eg' ${BUILD_DIR}/php.ini
+cp ${BUILD_DIR}/php.ini ${OPENSHIFT_RUNTIME_DIR}/etc/php.ini
+
 rm -rf ${BUILD_DIR}
 
 bash_profile=${OPENSHIFT_DATA_DIR}/.bash_profile
