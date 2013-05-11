@@ -46,29 +46,10 @@ http {
         root   ${OPENSHIFT_REPO_DIR}/web;
         charset utf-8;
 
-        #access_log off;
-        #error_log  $OPENSHIFT_DATA_DIR/nginx/logs/error.log;
-
         location / {
             index  index.html index.htm;
         }
 
-        #error_page  404              /404.html;
-
-        # redirect server error pages to the static page /50x.html
-        #
-        #error_page   500 502 503 504  /50x.html;
-        #location = /50x.html {
-        #}
-
-        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
-        #
-        #location ~ \.php$ {
-        #    proxy_pass   http://127.0.0.1;
-        #}
-
-        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
-        # php的设置，下篇文章介绍
         location ~ \.php$ {
             fastcgi_pass unix:${OPENSHIFT_RUN_DIR}/php-fpm.socket;
             fastcgi_index  index.php;
